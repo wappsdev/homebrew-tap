@@ -5,21 +5,21 @@
 class Wapps < Formula
   desc "wapps umbrella CLI for infra-tofu monorepo"
   homepage "https://github.com/wappsdev/wapps-cli"
-  version "0.5.0"
+  version "0.5.1"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/wappsdev/wapps-cli/releases/download/v0.5.0/wapps_0.5.0_Darwin_x86_64.tar.gz"
-      sha256 "26b9647181b8d0a3af513fa96c07738c3bea31759abae2cf2067f65b09b98291"
+      url "https://github.com/wappsdev/wapps-cli/releases/download/v0.5.1/wapps_0.5.1_Darwin_x86_64.tar.gz"
+      sha256 "9a188d2dfb57a8bd2e1edb8ce6dec87fa4dd20280328b1664dfa1261ca01630f"
 
       define_method(:install) do
         bin.install "wapps"
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/wappsdev/wapps-cli/releases/download/v0.5.0/wapps_0.5.0_Darwin_arm64.tar.gz"
-      sha256 "7ebe2ec5fe0f075ea317911dfcf01a861ba93391f0469799d406f82da931ef83"
+      url "https://github.com/wappsdev/wapps-cli/releases/download/v0.5.1/wapps_0.5.1_Darwin_arm64.tar.gz"
+      sha256 "adf72f1c57805da6b793517fea375fa227d8172c988dd1c4130555553473f2d6"
 
       define_method(:install) do
         bin.install "wapps"
@@ -29,15 +29,15 @@ class Wapps < Formula
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/wappsdev/wapps-cli/releases/download/v0.5.0/wapps_0.5.0_Linux_x86_64.tar.gz"
-      sha256 "12442343805f0bb92e587b70fee2b6fd5630ec8e5ead4b253406b6a7646c2633"
+      url "https://github.com/wappsdev/wapps-cli/releases/download/v0.5.1/wapps_0.5.1_Linux_x86_64.tar.gz"
+      sha256 "d4047a47d0abf91a543330eef49b03ceae4705781142f764f99e63f364818797"
       define_method(:install) do
         bin.install "wapps"
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/wappsdev/wapps-cli/releases/download/v0.5.0/wapps_0.5.0_Linux_arm64.tar.gz"
-      sha256 "07fdf5b3042afe1c15fb1d44523743840d577927e873534d8f3967ac8dcf31be"
+      url "https://github.com/wappsdev/wapps-cli/releases/download/v0.5.1/wapps_0.5.1_Linux_arm64.tar.gz"
+      sha256 "85042357e1bd702d355ec3ea734d5c5c7a67e171ba2e9ac13b2a88cd829e0a08"
       define_method(:install) do
         bin.install "wapps"
       end
