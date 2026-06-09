@@ -5,21 +5,21 @@
 class Wapps < Formula
   desc "wapps umbrella CLI for infra-tofu monorepo"
   homepage "https://github.com/wappsdev/wapps-cli"
-  version "0.14.1"
+  version "0.15.0"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/wappsdev/wapps-cli/releases/download/v0.14.1/wapps_0.14.1_Darwin_x86_64.tar.gz"
-      sha256 "127db09d911bc03a8e5eff51677a9aa2eef3392b5803a7c80cf03f1d8543fe82"
+      url "https://github.com/wappsdev/wapps-cli/releases/download/v0.15.0/wapps_0.15.0_Darwin_x86_64.tar.gz"
+      sha256 "c87cf484688c4e06eab83e81bb93049cdea9e00137c495814f03e1555f71874a"
 
       define_method(:install) do
         bin.install "wapps"
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/wappsdev/wapps-cli/releases/download/v0.14.1/wapps_0.14.1_Darwin_arm64.tar.gz"
-      sha256 "03ed7439a3a24758a19a1e6106991462e1cd4afe5a6e79858716664ec6776415"
+      url "https://github.com/wappsdev/wapps-cli/releases/download/v0.15.0/wapps_0.15.0_Darwin_arm64.tar.gz"
+      sha256 "db99233691ddfa670a58d5c820bc7d48709aed7252a6188e2a74383e78991991"
 
       define_method(:install) do
         bin.install "wapps"
@@ -29,19 +29,32 @@ class Wapps < Formula
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/wappsdev/wapps-cli/releases/download/v0.14.1/wapps_0.14.1_Linux_x86_64.tar.gz"
-      sha256 "d2e68232544f96e47a4e01d514aa8373070cd1279dfe15037ffb10d959e8ac55"
+      url "https://github.com/wappsdev/wapps-cli/releases/download/v0.15.0/wapps_0.15.0_Linux_x86_64.tar.gz"
+      sha256 "41332c4e9f332df399e9cf393afe2a0ed3ef49a3b68aa01e81e2d28bfbd72f42"
       define_method(:install) do
         bin.install "wapps"
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/wappsdev/wapps-cli/releases/download/v0.14.1/wapps_0.14.1_Linux_arm64.tar.gz"
-      sha256 "775dc187a3629816ca06d5606547db68724e3fbd17f513b10fb065b7a4205c61"
+      url "https://github.com/wappsdev/wapps-cli/releases/download/v0.15.0/wapps_0.15.0_Linux_arm64.tar.gz"
+      sha256 "4f01b9d2440b5009c78b6df4fc1e20bff6207cdf0134035c9dadca4db89fb8a8"
       define_method(:install) do
         bin.install "wapps"
       end
     end
+  end
+
+  def caveats
+    <<~EOS
+      Enable the AI-safe "wapps-secrets" skill so coding agents (Claude Code,
+      Cursor, Aider) use apply-only secret commands and never read your .env:
+
+        wapps skill install                 # user-wide (~/.claude/skills) — recommended
+        wapps skill install --local --copy  # committable copy in the current repo
+
+      After a future `brew upgrade wapps`, the skill auto-refreshes on the next
+      `wapps` run — no need to re-install.
+    EOS
   end
 
   test do
